@@ -18,14 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function modal(){
         const modal = document.querySelector('.modal')
         if(modal){
-            const modalBtn = document.querySelector('.modal-btn-f')
+            const modalBtn = document.querySelectorAll('.modal-btn-f')
             const modalBody = modal.querySelector('.modal__body')
-            modalBtn?.addEventListener('click', e => {
-                e.preventDefault()
-                modal.classList.add('active')
-                flag = false
-                updateTimer();
-            })
+
+            if(modalBtn.length > 0){
+                modalBtn.forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.preventDefault()
+                        modal.classList.add('active')
+                        flag = false
+                        updateTimer();
+                    })
+                })
+            }
             modalBody.addEventListener('click', e => {
                 e.stopPropagation()
             })
