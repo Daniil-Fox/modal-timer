@@ -19,14 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const modal = document.querySelector('.modal')
         if(modal){
             const modalBtn = document.querySelector('.modal-btn-f')
-
+            const modalBody = modal.querySelector('.modal__body')
             modalBtn?.addEventListener('click', e => {
                 e.preventDefault()
                 modal.classList.add('active')
                 flag = false
                 updateTimer();
             })
-
+            modalBody.addEventListener('click', e => {
+                e.stopPropagation()
+            })
             modal.addEventListener('click', e => {
                 modal.classList.remove('active')
                 flag = true
